@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'casos/aviso_semanal.dart';
-import 'casos/consumo_memoria.dart';
-import 'casos/lab_guardar.dart';
-import 'casos/medidor_texto.dart';
-import 'casos/registro_paneles.dart';
-import 'casos/tope_lectura.dart';
+import 'casos/factory.dart';
+import 'casos/inyeccion_de_dependencias.dart';
+import 'casos/adapter.dart';
+import 'casos/repository.dart';
+import 'casos/observer.dart';
+import 'casos/strategy.dart';
 
 void main() {
   final almacen = ConsumoEnMemoria();
@@ -30,32 +30,32 @@ class EcoTrackApp extends StatelessWidget {
     // y la redirección correcta a cada pantalla.
     final casos = <(String, String, Widget)>[
       (
-        'Caso A',
+        'Factory',
         'Centralizar la construcción de un objeto según el caso.',
         const PantallaAviso(),
       ),
       (
-        'Caso B',
+        'Inyeccion de dependencias',
         'Entregar desde fuera el objeto del que se depende.',
         const PantallaLab(),
       ),
       (
-        'Caso C',
+        'Adapter',
         'Traducir un formato ajeno al de la app.',
         PantallaMedidor(lector: lector),
       ),
       (
-        'Caso D',
+        'Repository',
         'Ocultar de dónde salen los datos.',
         PantallaConsumo(almacen: almacen),
       ),
       (
-        'Caso E',
+        'Observer',
         'Avisar a varios interesados sin nombrarlos.',
         const PantallaPaneles(),
       ),
       (
-        'Caso F',
+        'Strategy',
         'Intercambiar una regla sin copiar if.',
         const PantallaTope(),
       ),
